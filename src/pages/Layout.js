@@ -7,7 +7,7 @@ export default function Layout() {
     return (
         <>
             
-            <div className="preloader">
+            {/* <div className="preloader">
                 <div className="preloader-inner">
                 <div className="preloader-icon">
                     <span />
@@ -16,7 +16,7 @@ export default function Layout() {
                 </div>
             </div>
             
-            <div className="overlay" />
+            <div className="overlay" /> */}
             
             <a href="#0" className="scrollToTop">
                 <i className="fas fa-angle-up" />
