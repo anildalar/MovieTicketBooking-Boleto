@@ -1,0 +1,1 @@
+https://stackoverflow.com/questions/55990467/catch-all-redirect-for-create-react-app-in-netlify
