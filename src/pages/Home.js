@@ -1,9 +1,64 @@
 //1. Import area
-import React from 'react'
+import React, { useReducer } from 'react'
 
 //2. Defination
+
+
+//1. InitialState
+let initialState = {
+    movies:[
+            {
+              name:'Alone2',
+              image:'http://pixner.net/boleto/demo/assets/images/movie/movie01.jpg'
+            },
+            {
+              name:'Mars2',
+              image:"http://pixner.net/boleto/demo/assets/images/movie/movie02.jpg"
+            },
+            {
+              name:'Venus2',
+              image:"http://pixner.net/boleto/demo/assets/images/movie/movie03.jpg"
+            }
+          ],
+    cart:[]
+}
+  
+//console.log("OldState----->",initialState)
+
+let reducerFunction = (oldState = initialState,action)=>{
+    //console.log("oldState----->",oldState);
+    let newState = oldState;
+    switch(action.type){
+        case "REMOVE_MOVIE":
+
+            return {
+                ...oldState,
+                movies:[
+                    ...oldState.movies.filter((cv,idx,arr)=>{
+                        return cv.name !== action.mname
+                    })
+
+                ]
+            }
+            //console.log('Hello');
+            break;
+        case "ADD_MOVIE":
+            //console.log('Hi');
+            return newState;
+            break;
+        default:
+            return newState;
+    }   
+}
+
+
+//reducerFunction();
+
+//console.log("NewState----->",initialState)
+
 export default function Home() {
     //2.1 Hooks area
+    const [ newState ,dispatch] = useReducer( reducerFunction ,initialState)
 
     //2.2 Function defination
     
@@ -12,7 +67,8 @@ export default function Home() {
     return (
         <>
         
-            
+            { console.log('newState----->',newState.movies) }
+
             <section className="banner-section">
                 <div className="banner-bg bg_img bg-fixed" data-background="assets/images/banner/banner01.jpg" />
                 <div className="container">
@@ -41,24 +97,24 @@ export default function Home() {
                     </div>
                     <div className="col-lg-6 mb-20">
                         <ul className="tab-menu ticket-tab-menu">
-                        <li className="active">
-                            <div className="tab-thumb">
-                            <img src="assets/images/ticket/ticket-tab01.png" alt="ticket" />
-                            </div>
-                            <span>movie</span>
-                        </li>
-                        <li>
-                            <div className="tab-thumb">
-                            <img src="assets/images/ticket/ticket-tab02.png" alt="ticket" />
-                            </div>
-                            <span>events</span>
-                        </li>
-                        <li>
-                            <div className="tab-thumb">
-                            <img src="assets/images/ticket/ticket-tab03.png" alt="ticket" />
-                            </div>
-                            <span>sports</span>
-                        </li>
+                            <li className="active">
+                                <div className="tab-thumb">
+                                <img src="assets/images/ticket/ticket-tab01.png" alt="ticket" />
+                                </div>
+                                <span>movie</span>
+                            </li>
+                            <li>
+                                <div className="tab-thumb">
+                                <img src="assets/images/ticket/ticket-tab02.png" alt="ticket" />
+                                </div>
+                                <span>events</span>
+                            </li>
+                            <li>
+                                <div className="tab-thumb">
+                                <img src="assets/images/ticket/ticket-tab03.png" alt="ticket" />
+                                </div>
+                                <span>sports</span>
+                            </li>
                         </ul>
                     </div>
                     </div>
@@ -299,90 +355,43 @@ export default function Home() {
                         <a className="view-all" href="movie-grid.html">View All</a>
                         </div>
                         <div className="row mb-30-none justify-content-center">
-                        <div className="col-sm-6 col-lg-4">
-                            <div className="movie-grid">
-                            <div className="movie-thumb c-thumb">
-                                <a href="#0">
-                                <img src="assets/images/movie/movie01.jpg" alt="movie" />
-                                </a>
-                            </div>
-                            <div className="movie-content bg-one">
-                                <h5 className="title m-0">
-                                <a href="#0">alone</a>
-                                </h5>
-                                <ul className="movie-rating-percent">
-                                <li>
-                                    <div className="thumb">
-                                    <img src="assets/images/movie/tomato.png" alt="movie" />
-                                    </div>
-                                    <span className="content">88%</span>
-                                </li>
-                                <li>
-                                    <div className="thumb">
-                                    <img src="assets/images/movie/cake.png" alt="movie" />
-                                    </div>
-                                    <span className="content">88%</span>
-                                </li>
-                                </ul>
-                            </div>
-                            </div>
-                        </div>
-                        <div className="col-sm-6 col-lg-4">
-                            <div className="movie-grid">
-                            <div className="movie-thumb c-thumb">
-                                <a href="#0">
-                                <img src="assets/images/movie/movie02.jpg" alt="movie" />
-                                </a>
-                            </div>
-                            <div className="movie-content bg-one">
-                                <h5 className="title m-0">
-                                <a href="#0">mars</a>
-                                </h5>
-                                <ul className="movie-rating-percent">
-                                <li>
-                                    <div className="thumb">
-                                    <img src="assets/images/movie/tomato.png" alt="movie" />
-                                    </div>
-                                    <span className="content">88%</span>
-                                </li>
-                                <li>
-                                    <div className="thumb">
-                                    <img src="assets/images/movie/cake.png" alt="movie" />
-                                    </div>
-                                    <span className="content">88%</span>
-                                </li>
-                                </ul>
-                            </div>
-                            </div>
-                        </div>
-                        <div className="col-sm-6 col-lg-4">
-                            <div className="movie-grid">
-                            <div className="movie-thumb c-thumb">
-                                <a href="#0">
-                                <img src="assets/images/movie/movie03.jpg" alt="movie" />
-                                </a>
-                            </div>
-                            <div className="movie-content bg-one">
-                                <h5 className="title m-0">
-                                <a href="#0">venus</a>
-                                </h5>
-                                <ul className="movie-rating-percent">
-                                <li>
-                                    <div className="thumb">
-                                    <img src="assets/images/movie/tomato.png" alt="movie" />
-                                    </div>
-                                    <span className="content">88%</span>
-                                </li>
-                                <li>
-                                    <div className="thumb">
-                                    <img src="assets/images/movie/cake.png" alt="movie" />
-                                    </div>
-                                    <span className="content">88%</span>
-                                </li>
-                                </ul>
-                            </div>
-                            </div>
-                        </div>
+                            {
+                                newState.movies && 
+                                    newState.movies.map((cv,idx,arr)=>{
+                                        return (
+                                                <div key={idx} className="col-sm-6 col-lg-4">
+                                                    <div className="movie-grid">
+                                                    <div className="movie-thumb c-thumb">
+                                                        <a href="#0">
+                                                            <img src={cv.image} alt="movie" />
+                                                        </a>
+                                                    </div>
+                                                    <div className="movie-content bg-one">
+                                                        <h5 className="title m-0">
+                                                        <a href="#0">{cv.name}</a>
+                                                        </h5>
+                                                        <ul className="movie-rating-percent">
+                                                            <li>
+                                                                <div className="thumb">
+                                                                <img src="assets/images/movie/tomato.png" alt="movie" />
+                                                                </div>
+                                                                <span className="content">88%</span>
+                                                            </li>
+                                                            <li>
+                                                                <div className="thumb">
+                                                                <img src="assets/images/movie/cake.png" alt="movie" />
+                                                                </div>
+                                                                <span className="content">88%</span>
+                                                                <br />
+                                                                <button className="btn btn-danger btn-sm" onClick={(e)=>{ dispatch({type:"REMOVE_MOVIE",mname:cv.name}) }}>D</button>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    </div>
+                                                </div>
+                                            )
+                                    })
+                            }
                         </div>
                     </div>
                     <div className="article-section padding-bottom">

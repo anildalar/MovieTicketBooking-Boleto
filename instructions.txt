@@ -7,3 +7,108 @@ https://themeforest.net/
 	2. Donwload the source code with HTTrack Software (Illegal )
 
 https://stackoverflow.com/questions/55990467/catch-all-redirect-for-create-react-app-in-netlify
+
+
+
+#56  React Live Project -  Movie Ticket Booking - useContext and useReducer
+
+
+useAnything() will be a function import from react library
+useState(initialState)
+
+
+There are 2 important element of useReducer Hook FUnciton
+1. <reducerFunction>
+2. <initialState>
+useReducer(<reducerFunction>, <initialState>)
+
+
+useReducer is a hook function
+useState   is a hook function
+
+What is reducer Function in ReactJs.
+
+Reducer function is a function which takes two argument
+1. OldState
+2. Action
+and it will return the new State
+
+let anil = ()=>{
+		return something
+}
+
+array.map((cv,idx,arr)=>{})
+
+array.filter((cv,idx,arr)=>{
+			return with conditions
+	})
+
+
+
+
+Theaters
+	name
+	address
+	
+
+Movies
+	name text
+	summery long_text
+	length_hr
+	lenght_min
+	image_thumb 275x396 (Single)
+	image_banner 1920x500 (Single)
+	image_thumb_gallery  255x136 (Multiple)
+
+
+ShowTime
+	Theater
+	Movie
+	Time From To eg. 9:00 to 11:00
+
+
+Languages
+
+Genre
+
+Format
+
+Seating Plan
+	Relation with Theator
+	Seating Plan Code Group
+	
+
+CAST
+	fname
+	lname
+	role  1. Actor 2. Actoress 3. Villain
+	pic
+	dob
+	birthplace
+
+Crew
+	fname
+	lname
+	role  
+		1. Directory 
+		2. Executive Directory 
+		3. Producer
+		4. Executive Producter
+		5. Cinematographer
+		6. Editor
+	pic
+
+
+Rating
+
+
+Email Subscribers
+
+
+
+
+
+https://www.npmjs.com/package/@mihtonmi/strapi-crack-ee
+
+
+https://dev.to/singhanuj620/usereducer-react-hook-with-project-1pg
