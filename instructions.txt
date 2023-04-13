@@ -56,6 +56,7 @@ Movies
 	summery long_text
 	length_hr
 	lenght_min
+	release_date
 	image_thumb 275x396 (Single)
 	image_banner 1920x500 (Single)
 	image_thumb_gallery  255x136 (Multiple)
@@ -67,11 +68,11 @@ ShowTime
 	Time From To eg. 9:00 to 11:00
 
 
-Languages
+Languages - Done
 
-Genre
+Genre   - Done
 
-Format
+Format  
 
 Seating Plan
 	Relation with Theator
@@ -106,7 +107,13 @@ Email Subscribers
 
 
 
+Strapi Comunity Edition to Enterprise Edtiion (EE)
 
+Facility
+You can create multiple Roles
+
+
+npm run strapi install documentation
 
 https://www.npmjs.com/package/@mihtonmi/strapi-crack-ee
 
