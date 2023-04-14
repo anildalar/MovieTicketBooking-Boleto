@@ -119,3 +119,13 @@ https://www.npmjs.com/package/@mihtonmi/strapi-crack-ee
 
 
 https://dev.to/singhanuj620/usereducer-react-hook-with-project-1pg
+
+
+  const [variable, setVariableFunction] = useState(initialValue);
+
+  const [newState, dispatch] = useReducer(reducer, initialState);
+
+
+Always remember
+
+1. ACTIONS are writtern in CAPITAL LEtter

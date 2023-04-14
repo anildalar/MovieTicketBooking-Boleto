@@ -17,9 +17,6 @@ import MovieCheckout from './pages/MovieCheckout';
 import Popcorn from './pages/Popcorn';
 import { URL } from './helper/helper';
 
-
-
-
 // PO.then().catch().finally();
 
 export const initialState = {
@@ -96,9 +93,9 @@ function App() {
           <Route path="/movie-checkout" element={<MovieCheckout />}></Route>
           <Route path="/popcorn" element={<Popcorn />}></Route>
         </Route>
+        
         <Route path="/sign-in" element={<SignIn/>}></Route>
         <Route path="/sign-up" element={<SignUp/>}></Route>
-
         <Route path="*" element={<NoPage/>}></Route>
       </Routes>
     </BrowserRouter>
