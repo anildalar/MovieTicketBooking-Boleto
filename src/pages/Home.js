@@ -20,7 +20,8 @@ export default function Home() {
 
     //2.2 Function defination
     useEffect(()=>{
-        console.log("newState---->",newState)
+        console.log('movies332211----->',movies);
+        console.log("newState---->new state",newState)
     },[]);//After page reload
     
 
@@ -317,8 +318,9 @@ export default function Home() {
                         </div>
                         <div className="row mb-30-none justify-content-center">
                             {
-                                newState.movies && 
-                                    newState.movies.map((cv,idx,arr)=>{
+                                movies.movies && 
+                                    movies.movies.map((cv,idx,arr)=>{
+                                        console.log(cv);
                                         return (
                                                 <div key={idx} className="col-sm-6 col-lg-4">
                                                     <div className="movie-grid">
