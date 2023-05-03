@@ -9,7 +9,8 @@ const Authmiddleware = ({
   ...rest
 }) => (
   <Route
-    {...rest}
+    { ...rest }
+    
     render={props => {
       if (isAuthProtected && !localStorage.getItem("authUser")) {
         return (

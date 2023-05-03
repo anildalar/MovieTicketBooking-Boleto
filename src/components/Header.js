@@ -1,5 +1,6 @@
 import React from 'react'
 import Navigation from './Navigation'
+import { Link } from 'react-router-dom'
 
 export default function Header() {
     return (
@@ -8,9 +9,9 @@ export default function Header() {
                 <div className="container">
                     <div className="header-wrapper">
                         <div className="logo">
-                            <a href="/">
+                            <Link to="/">
                                 <img src="assets/images/logo/logo.png" alt="logo" />
-                            </a>
+                            </Link>
                         </div>
                         <Navigation />
 

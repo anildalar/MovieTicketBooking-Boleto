@@ -1,74 +1,88 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-export default function Navigation() {
+export default function 
+Navigation() {
     return (
         <>
             <ul className="menu">
                 <li>
-                    <a href="/" className="active">Home</a>
+                    <Link to="/" className="active">Home123</Link>
                     <ul className="submenu">
                     <li>
-                        <a href="/" className="active">Home One</a>
+                        <Link to="/" className="active">Home One</Link>
                     </li>
                     <li>
-                        <a href="/index-2">Home Two</a>
+                        <Link to="/index-2">Home Two</Link>
                     </li>
                     </ul>
                 </li>
                 <li>
-                    <a href="/#0">movies</a>
+                    <Link to="/#0">movies</Link>
                     <ul className="submenu">
                     <li>
-                        <a href="/movie-grid">Movie Grid</a>
+                        <Link to="/movie-grid">Movie Grid</Link>
                     </li>
                     <li>
-                        <a href="/movie-list">Movie List</a>
+                        <Link to="/movie-list">Movie List</Link>
                     </li>
                     <li>
-                        <a href="/movie-details">Movie Details</a>
+                        <Link to="/movie-details">Movie Details</Link>
                     </li>
                     <li>
-                        <a href="/movie-details-2">Movie Details 2</a>
+                        <Link to="/movie-details-2">Movie Details 2</Link>
                     </li>
                     <li>
-                        <a href="/movie-ticket-plan">Movie Ticket Plan</a>
+                        <Link to="/movie-ticket-plan">Movie Ticket Plan</Link>
                     </li>
                     <li>
-                        <a href="/movie-seat-plan">Movie Seat Plan</a>
+                        <Link to="/movie-seat-plan">Movie Seat Plan</Link>
                     </li>
                     <li>
-                        <a href="/movie-checkout">Movie Checkout</a>
+                        <Link to="/movie-checkout">Movie Checkout</Link>
                     </li>
                     <li>
-                        <a href="/popcorn">Movie Food</a>
+                        <Link to="/popcorn">Movie Food</Link>
                     </li>
                     </ul>
                 </li>
                 <li>
-                    <a href="/#0">pages</a>
+                    <Link to="/#0">pages</Link>
                     <ul className="submenu">
                     <li>
-                        <a href="/about">About Us</a>
+                        <Link to="/about">About Us</Link>
                     </li>
                     <li>
-                        <a href="/apps-download">Apps Download</a>
+                        <Link to="/apps-download">Apps Download</Link>
                     </li>
                     <li>
-                        <a href="/sign-in">Sign In</a>
+                        <Link to="/sign-in">Sign In</Link>
                     </li>
                     <li>
-                        <a href="/sign-up">Sign Up</a>
+                        <Link to="/sign-up">Sign Up</Link>
                     </li>
                     <li>
-                        <a href="/404">404</a>
+                        <Link to="/404">404</Link>
                     </li>
                     </ul>
                 </li>
+               
                 <li>
-                    <a href="/contact">contact</a>
+                    <Link to="/contact">contact</Link>
+                </li>
+                <li>
+                    <a href="/#0">Lanaguage</a>
+                    <ul className="submenu">
+                        <li>
+                            <a href="false" onClick={()=>{  }}>English</a>
+                        </li>
+                        <li>
+                            <a href="false" onClick={()=>{  }}>Hindi</a>
+                        </li>
+                    </ul>
                 </li>
                 <li className="header-button pr-0">
-                    <a href="/sign-up">join us</a>
+                    <Link to="/sign-up">join us</Link>
                 </li>
             </ul>
         </>

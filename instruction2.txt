@@ -1,0 +1,13 @@
+1. HTML Theme ---> ReactJs
+
+2. State management you can use RTK
+
+3. I will create on page using RCC
+
+JS Class
+   RCC =  React Class Compoent
+There are 2 types of compoent in ReactJs
+RFC
+RCC
+
+Movie- Detail 2

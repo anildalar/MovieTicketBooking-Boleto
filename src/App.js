@@ -5,7 +5,7 @@ import axios from 'axios';
 import './App.css';
 
 
-import { BACKEND_URL, FRONTEND_URL } from './helper/helper';
+import { BACKEND_URL } from './helper/helper';
 import Layout from './pages/Layout';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
@@ -13,8 +13,6 @@ import NoPage from './pages/NoPage';
 import { allPublicRoutes } from './routes/allRoutes';
 
 // PO.then().catch().finally();
-
-export const MovieContext = createContext();
 
 function App() {
   //2.1
@@ -69,10 +67,6 @@ function App() {
 
   //2.3
   return (
-
-    
-    <MovieContext.Provider value={initialState}>
-      { console.log('1123',initialState)}
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>
@@ -88,7 +82,6 @@ function App() {
           <Route path="*" element={<NoPage/>}></Route>
         </Routes>
       </BrowserRouter>
-    </MovieContext.Provider>
   );
 }
 
