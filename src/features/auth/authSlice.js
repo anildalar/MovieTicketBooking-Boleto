@@ -6,9 +6,9 @@ let initialState = {
     userInfo:null,
     token:null,
 
-    loading:null,
-    success:null,
-    error:null,
+    loading:false,
+    success:false,
+    error:false,
 }
 
 export const signUpAsync = createAsyncThunk(
@@ -28,6 +28,13 @@ export const authSlice = createSlice({
         builder
             .addCase(signUpAsync.pending, (state) => {
                 //state.status = 'loading';
+                state.loading = true;// I can directly update the state
+            })
+            .addCase(signUpAsync.rejected, (state,action) => {
+                //state.status = 'loading';
+                state.loading = false;
+                state.success = false;
+                state.error = true;
             })
             .addCase(signUpAsync.fulfilled, (state, action) => {
                 console.log('state-->',state);
@@ -35,6 +42,10 @@ export const authSlice = createSlice({
                 console.log('action-->',action);
                 console.log('action.payload-->',action.payload);
                 //state.status = 'idle';
+                //update the store object
+                state.loading = false;
+                state.success = true;
+                state.error = false;
                 state.userInfo  = action.payload.user;
                 state.token = action.payload.jwt;
                 //state.value += action.payload;

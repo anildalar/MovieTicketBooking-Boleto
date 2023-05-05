@@ -77,7 +77,7 @@ function App() {
             }
           </Route>
           
-          <Route path="/sign-in" element={<SignIn/>}></Route>
+          <Route path="/sign-in/:e/:p" element={<SignIn/>}></Route>
           <Route path="/sign-up" element={<SignUp/>}></Route>
           <Route path="*" element={<NoPage/>}></Route>
         </Routes>

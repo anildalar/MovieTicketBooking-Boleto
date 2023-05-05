@@ -1,6 +1,10 @@
 import React from 'react'
+import { useParams } from 'react-router-dom';
 
 export default function SignIn() {
+    //2.2 Hooks area
+    let { e,p } = useParams();
+
     return (
         <>
             <section className="account-section bg_img" data-background="assets/images/account/account-bg.jpg">
@@ -14,11 +18,11 @@ export default function SignIn() {
                         <form className="account-form">
                         <div className="form-group">
                             <label htmlFor="email2">Email<span>*</span></label>
-                            <input type="text" placeholder="Enter Your Email" id="email2" required />
+                            <input type="text" value={ e } placeholder="Enter Your Email" id="email2" required />
                         </div>
                         <div className="form-group">
                             <label htmlFor="pass3">Password<span>*</span></label>
-                            <input type="password" placeholder="Password" id="pass3" required />
+                            <input type="password" value={p} placeholder="Password" id="pass3" required />
                         </div>
                         <div className="form-group checkgroup">
                             <input type="checkbox" id="bal2" required defaultChecked />

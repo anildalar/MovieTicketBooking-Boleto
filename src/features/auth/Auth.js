@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { selectUserInfo, signUpAsync } from './authSlice';
 import { useState } from 'react';
 import swal from 'sweetalert';
+import Spinner from '../../components/Spinner';
+import { useNavigate } from 'react-router-dom';
 
 export default function Auth() {
     //2.1 Hooks area
+
     const [payload,setPayload] = useState( {
         "username": null,
         "email": null,
@@ -15,6 +18,21 @@ export default function Auth() {
     let userInfo = useSelector(selectUserInfo);
     const dispatch = useDispatch()
 
+    
+
+    const navigate = useNavigate()
+
+    useEffect(()=>{
+        if(userInfo.auth.success === true){
+            swal("User Registered Successfully!", "", "success");
+            setTimeout(()=>{
+                navigate(`/sign-in/${payload.email}/${payload.password}`);
+            },3000)
+        }
+        if(userInfo.auth.error === true){
+            swal("User Not Registered Successfully!", "", "error");
+        }
+    },[userInfo]);
 
     //2.2 Function defination area
     let handleChange = (e)=>{
@@ -35,7 +53,7 @@ export default function Auth() {
             //Call the async api
         }else{
             swal("Validation error!", "Password and Confirm password doesnt match", "error")
-            //alert("Password and Confirm password doesnt match");
+            
         }
     } // ES6 2015
     return (
@@ -43,7 +61,9 @@ export default function Auth() {
             { console.log('userInfo--->',userInfo) }
 
             {console.log('payload--->',payload)}
+
             <form className="account-form">
+                
                 <div className="form-group">
                     <label htmlFor="username">Username<span>*</span></label>
                     <input type="text" name="username" placeholder="Enter Your Username" onChange={handleChange} id="username" required />
@@ -65,7 +85,9 @@ export default function Auth() {
                     <label htmlFor="bal">I agree to the <a href="#0">Terms, Privacy Policy</a> and <a href="#0">Fees</a></label>
                 </div>
                 <div className="form-group text-center">
-                    <input type="button" onClick={()=>{ submitData() }} defaultValue="Sign Up" />
+                    <button type="button" className="bg-transparent text-white border-bottom" onClick={submitData}>
+                        { userInfo.auth.loading?<Spinner/>:'Sign Up' }
+                    </button>
                 </div>
             </form>
         </>
