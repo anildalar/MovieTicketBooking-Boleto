@@ -9088,6 +9088,19 @@ aside {
   -webkit-animation-delay: -0.8s;
 }
 
+input[type="button"]{
+  background-image: -webkit-linear-gradient(169deg, #5560ff 17%, #aa52a1 63%, #ff4343 100%);
+  -webkit-transition: all ease 0.3s;
+  transition: all ease 0.3s;
+  border-radius: 30px;
+  width: auto;
+  height: 50px;
+  text-transform: uppercase;
+  margin: 0 auto;
+  border-radius: 50px !important;
+  text-align: center;
+}
+
 @keyframes preloader-fx {
   0% {
     -webkit-transform: scale(0, 0);

@@ -6,7 +6,7 @@ import swal from 'sweetalert';
 import Spinner from '../../components/Spinner';
 import { useNavigate } from 'react-router-dom';
 
-export default function Auth() {
+export default function SignUp() {
     //2.1 Hooks area
 
     const [payload,setPayload] = useState( {
@@ -30,7 +30,7 @@ export default function Auth() {
             },3000)
         }
         if(userInfo.auth.error === true){
-            swal("User Not Registered Successfully!", "", "error");
+            swal(userInfo.auth.errorMsg, "", "error");
         }
     },[userInfo]);
 

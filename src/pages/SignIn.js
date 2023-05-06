@@ -1,9 +1,8 @@
 import React from 'react'
-import { useParams } from 'react-router-dom';
+import SignIn2 from '../features/auth/SignIn'
 
 export default function SignIn() {
-    //2.2 Hooks area
-    let { e,p } = useParams();
+    
 
     return (
         <>
@@ -15,24 +14,7 @@ export default function SignIn() {
                         <span className="cate">hello</span>
                         <h2 className="title">welcome back</h2>
                         </div>
-                        <form className="account-form">
-                        <div className="form-group">
-                            <label htmlFor="email2">Email<span>*</span></label>
-                            <input type="text" value={ e } placeholder="Enter Your Email" id="email2" required />
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="pass3">Password<span>*</span></label>
-                            <input type="password" value={p} placeholder="Password" id="pass3" required />
-                        </div>
-                        <div className="form-group checkgroup">
-                            <input type="checkbox" id="bal2" required defaultChecked />
-                            <label htmlFor="bal2">remember password</label>
-                            <a href="#0" className="forget-pass">Forget Password</a>
-                        </div>
-                        <div className="form-group text-center">
-                            <input type="submit" defaultValue="log in" />
-                        </div>
-                        </form>
+                        <SignIn2 />
                         <div className="option">
                         Don't have an account? <a href="/sign-up">sign up now</a>
                         </div>

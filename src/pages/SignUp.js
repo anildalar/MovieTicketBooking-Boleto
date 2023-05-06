@@ -1,7 +1,7 @@
 //1 Import area
-import React, { useState } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom';
-import Auth from '../features/auth/Auth';
+import SignUp2 from '../features/auth/SignUp';
 
 //2.Defination area (RFC/RCC)
 //RFC = React Functional Component
@@ -22,7 +22,7 @@ function SignUp() {
                         <span className="cate">welcome</span>
                         <h2 className="title">to <Link to="/">Boleto</Link> </h2>
                         </div>
-                        <Auth />
+                        <SignUp2 />
                         <div className="option">
                             Already have an account? <a href="/sign-in">Login</a>
                         </div>

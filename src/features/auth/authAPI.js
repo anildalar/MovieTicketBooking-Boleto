@@ -24,3 +24,26 @@ export const signUp = (payload)=>{
     });
     
 }
+
+export const signIn = (payload)=>{
+    // Method will take some time for response
+    //let object = new ClassName();
+    //return object
+    // short 
+    // return new ClassName();
+    return new Promise((resolve, reject)=>{
+        // We will call the actual API
+        //PO.then().catch().finally()
+
+        axios.post(`${BACKEND_URL}/api/auth/local`,payload)
+        .then(function (response) {
+            console.log(response);
+            resolve(response)
+        })
+        .catch(function (error) {
+            console.log(error);
+            reject(error)
+        });
+    });
+    
+}

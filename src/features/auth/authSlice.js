@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { signUp } from "./authAPI";
+import { signIn, signUp } from "./authAPI";
 
 
 let initialState = {
@@ -9,6 +9,8 @@ let initialState = {
     loading:false,
     success:false,
     error:false,
+    errorMsg:'',
+    testing:"Hello dosto aap kese ahi"
 }
 
 export const signUpAsync = createAsyncThunk(
@@ -19,6 +21,18 @@ export const signUpAsync = createAsyncThunk(
         return z.data;
     }
 )
+
+export const signInAsync = createAsyncThunk(
+    'auth/signIn',
+    async (payload)=>{
+        let loginResponse = await signIn(payload)
+        console.log('loginResponse--->',JSON.stringify(loginResponse.data.user));
+        localStorage.setItem('usefInfo',JSON.stringify(loginResponse.data.user));
+        localStorage.setItem('jwt',loginResponse.data.jwt);
+        return loginResponse.data;
+    }
+)
+
 
 export const authSlice = createSlice({
     name:'auth',
@@ -35,8 +49,12 @@ export const authSlice = createSlice({
                 state.loading = false;
                 state.success = false;
                 state.error = true;
+                console.log('--------------------> Rejected block executed')
+                console.log('-------------------->action',action)
+                state.errorMsg = 'User Not Registered!'; //action.payload;
             })
             .addCase(signUpAsync.fulfilled, (state, action) => {
+                console.log('--------------------> fulfilled block executed')
                 console.log('state-->',state);
                 console.log('state-->',state);
                 console.log('action-->',action);
@@ -50,6 +68,36 @@ export const authSlice = createSlice({
                 state.token = action.payload.jwt;
                 //state.value += action.payload;
             });
+        builder
+            .addCase(signInAsync.pending, (state) => {
+                //state.status = 'loading';
+                state.loading = true;// I can directly update the state
+            })
+            .addCase(signInAsync.rejected, (state,action) => {
+                //state.status = 'loading';
+                state.loading = false;
+                state.success = false;
+                state.error = true;
+                console.log('--------------------> Rejected block executed')
+                console.log('-------------------->action',action)
+                state.errorMsg = 'Invalid Credentails!'; //action.payload;
+            })
+            .addCase(signInAsync.fulfilled, (state, action) => {
+                console.log('--------------------> fulfilled block executed')
+                console.log('state-->',state);
+                console.log('state-->',state);
+                console.log('action-->',action);
+                console.log('action.payload-->',action.payload);
+                //state.status = 'idle';
+                //update the store object
+                state.loading = false;
+                state.success = true;
+                state.error = false;
+                state.userInfo  = action.payload.user;
+                state.token = action.payload.jwt;
+                //state.value += action.payload;
+            });
+        
     }
 
 });
