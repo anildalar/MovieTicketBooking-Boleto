@@ -17,10 +17,8 @@ export default function SignIn() {
 
     useEffect(()=>{
         if(userinfo.auth.success){
-            swal("User Logged Successfully!", "", "success");
-            setTimeout(()=>{
-                navigate(`/`);
-            },3000)
+            //swal("User Logged Successfully!", "", "success");
+            navigate(`/`);
         }
     },[userinfo]);
     //2.2 Function defination

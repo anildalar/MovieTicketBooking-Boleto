@@ -1,10 +1,17 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { logout, selectUserInfo } from '../features/auth/authSlice'
 
-export default function 
-Navigation() {
+//RFC
+export default function Navigation() {
+    //2.1 Hooks area
+    let userInfo = useSelector(selectUserInfo);
+    let dispatch = useDispatch()
+
     return (
         <>
+            {console.log('navigation------->',userInfo)}
             <ul className="menu">
                 <li>
                     <Link to="/" className="active">Home123</Link>
@@ -82,7 +89,7 @@ Navigation() {
                     </ul>
                 </li>
                 <li className="header-button pr-0">
-                    <Link to="/sign-up">join us</Link>
+                    {  userInfo.auth.token !== null ? <Link to="/sign-up" onClick={()=>{ dispatch(logout()) }}>Log Out</Link>:<Link to="/sign-up">join us</Link>  }
                 </li>
             </ul>
         </>

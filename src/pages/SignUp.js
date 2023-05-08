@@ -24,7 +24,7 @@ function SignUp() {
                         </div>
                         <SignUp2 />
                         <div className="option">
-                            Already have an account? <a href="/sign-in">Login</a>
+                            Already have an account? <Link to="/sign-in">Login</Link>
                         </div>
                         <div className="or"><span>Or</span></div>
                         <ul className="social-icons">
