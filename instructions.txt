@@ -134,3 +134,5 @@ Always remember
 https://www.cloudnweb.dev/2021/02/modern-react-redux-tutotials-redux-toolkit-login-user-registration/
 
 https://blog.logrocket.com/handling-user-authentication-redux-toolkit/
+
+https://dev.to/raaynaldo/rtk-query-tutorial-crud-51hl

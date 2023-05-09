@@ -1,82 +1,70 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { signIn, signUp } from "./authAPI";
+import { getMovies } from "./movieAPI";
+import { BACKEND_URL } from "../../helper/helper";
 
 
 let initialState = {
-    movies:[]
-}
+    movies:[
+                {
+                name:"Chor-Nikal-Ke-Bhaga",
+                image:'https://c.saavncdn.com/010/Chor-Nikal-Ke-Bhaga-Soundtrack-from-the-Netflix-Film-Hindi-2023-20230314201135-500x500.jpg'
+            },
+            {
+                name:"RRR123",
+                image:'https://www.koimoi.com/wp-content/new-galleries/2021/12/ram-charan-gives-rrr-trailer-launch-a-miss-001.jpg'
+            }]
+        }
 
-export const signUpAsync = createAsyncThunk(
-    'auth/signUp',
-    async (payload)=>{
-        let z = await signUp(payload)
-        console.log('z--->',z.data);
-        return z.data;
+export const movieAsync = createAsyncThunk(
+    'movie/getMovie',
+    async ()=>{
+        let movies = await getMovies()
+        console.log('moviee data123 --->',movies.data.data);
+        
+        return movies.data.data.map((cv,idx,arr)=>{
+            return {
+                name:cv.attributes.name,
+                image:BACKEND_URL+''+ cv.attributes.image_thumb.data.attributes.url,
+            }
+        });
+        
     }
 )
 
 
 
-export const authSlice = createSlice({
-    name:'auth',
+export const movieSlice = createSlice({
+    name:'movie',
     initialState,
     reducers:{
         //1. P:V
 
         //2. Methods
-        logout:(state)=>{
-            localStorage.clear();
-            state.userInfo = null;
-            state.token = null;
-
-            state.loading=false;
-            state.success=false;
-            state.error=false;
-            state.errorMsg='';
-
-        }
+       
     },
     extraReducers:(builder)=>{
         builder
-            .addCase(signUpAsync.pending, (state) => {
-                //state.status = 'loading';
-                state.loading = true;// I can directly update the state
+            .addCase(movieAsync.pending, (state) => {
+                console.log('pending state -->',state);
             })
-            .addCase(signUpAsync.rejected, (state,action) => {
-                //state.status = 'loading';
-                state.loading = false;
-                state.success = false;
-                state.error = true;
-                console.log('--------------------> Rejected block executed')
-                console.log('-------------------->action',action)
-                state.errorMsg = 'User Not Registered!'; //action.payload;
+            .addCase(movieAsync.rejected, (state,action) => {
+                console.log('rejected state -->',state);
+                console.log('rejected action --->',action);
             })
-            .addCase(signUpAsync.fulfilled, (state, action) => {
-                console.log('--------------------> fulfilled block executed')
-                console.log('state-->',state);
-                console.log('state-->',state);
-                console.log('action-->',action);
-                console.log('action.payload-->',action.payload);
-                //state.status = 'idle';
-                //update the store object
-                state.loading = false;
-                state.success = true;
-                state.error = false;
-                state.userInfo  = action.payload.user;
-                state.token = action.payload.jwt;
-                //state.value += action.payload;
+            .addCase(movieAsync.fulfilled, (state, action) => {
+               //console.log('fullfiled state -->',state);
+               console.log('fullfiled action --->',action);
+               state.movies = action.payload
             });
-        
+
     }
 
 });
 
 
-export const selectUserInfo = (state)=> {
-    console.log('NewState---->',state);
+export const selectMovieInfo = (state)=> {
+    console.log('New Movie State---->',state);
     return state;
 };
 
-
-export const { updateRTKStoreObj,logout } = authSlice.actions
-export default authSlice.reducer;
+export default movieSlice.reducer;

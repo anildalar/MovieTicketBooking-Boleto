@@ -2,7 +2,7 @@ import axios from "axios";
 import { BACKEND_URL } from "../../helper/helper";
 
 
-export const getMovies = (payload)=>{
+export const getMovies = ()=>{
     // Method will take some time for response
     //let object = new ClassName();
     //return object
@@ -12,7 +12,7 @@ export const getMovies = (payload)=>{
         // We will call the actual API
         //PO.then().catch().finally()
 
-        axios.post(`${BACKEND_URL}/api/auth/local/register`,payload)
+        axios.get(`${BACKEND_URL}/api/movies?populate=*`)
         .then(function (response) {
             console.log(response);
             resolve(response)

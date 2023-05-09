@@ -1,5 +1,7 @@
 //1. Import area
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
+import Movie from '../features/movie/Movie';
+import Movie2 from '../features/movie/Movie2';
 //2. Defination
   
 //console.log("OldState----->",initialState)
@@ -12,7 +14,7 @@ import React, { useEffect, useState } from 'react'
 export default function Home() {
     //2.1 Hooks area
     //const [ newState ,dispatch] = useReducer( reducerFunction ,movies)
-    const [movies,setMovies] = useState([]);
+    
     //2.2 Function defination
     useEffect(()=>{
         //console.log('movies332211----->',movies);
@@ -306,52 +308,7 @@ export default function Home() {
                     </div>
                     </div>
                     <div className="col-lg-9">
-                    <div className="article-section padding-bottom">
-                        <div className="section-header-1">
-                        <h2 className="title">movies</h2>
-                        <a className="view-all" href="movie-grid.html">View All</a>
-                        </div>
-                        <div className="row mb-30-none justify-content-center">
-                            {
-                               movies && 
-                                    movies.map((cv,idx,arr)=>{
-                                        console.log(cv);
-                                        return (
-                                                <div key={idx} className="col-sm-6 col-lg-4">
-                                                    <div className="movie-grid">
-                                                    <div className="movie-thumb c-thumb">
-                                                        <a href="#0">
-                                                            <img src={cv.image} alt="movie" />
-                                                        </a>
-                                                    </div>
-                                                    <div className="movie-content bg-one">
-                                                        <h5 className="title m-0">
-                                                        <a href="#0">{cv.name}</a>
-                                                        </h5>
-                                                        <ul className="movie-rating-percent">
-                                                            <li>
-                                                                <div className="thumb">
-                                                                <img src="assets/images/movie/tomato.png" alt="movie" />
-                                                                </div>
-                                                                <span className="content">88%</span>
-                                                            </li>
-                                                            <li>
-                                                                <div className="thumb">
-                                                                <img src="assets/images/movie/cake.png" alt="movie" />
-                                                                </div>
-                                                                <span className="content">88%</span>
-                                                                <br />
-                                                                
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    </div>
-                                                </div>
-                                            )
-                                    })
-                            }
-                        </div>
-                    </div>
+                    <Movie />
                     <div className="article-section padding-bottom">
                         <div className="section-header-1">
                         <h2 className="title">events</h2>
