@@ -1,5 +1,6 @@
 import React from 'react'
 import { useGetMovieByNameQuery } from '../../services/movies'
+import { BACKEND_URL } from '../../helper/helper';
 
 export default function Movie2() {
     //2.1 Hooks area
@@ -14,20 +15,19 @@ export default function Movie2() {
                         </div>
                         <div className="row mb-30-none justify-content-center">
                             {
-                             /*   movieInfo.movie.movies && 
-                               movieInfo.movie.movies.map((cv,idx,arr)=>{
+                               data?.data.map((cv,idx,arr)=>{
                                         console.log(cv);
                                         return (
                                                 <div key={idx} className="col-sm-6 col-lg-4">
                                                     <div className="movie-grid">
                                                     <div className="movie-thumb c-thumb">
                                                         <a href="#0">
-                                                            <img src={cv.image} alt="movie" />
+                                                            <img src={BACKEND_URL+""+cv.attributes.image_thumb.data.attributes.url} alt="movie" />
                                                         </a>
                                                     </div>
                                                     <div className="movie-content bg-one">
                                                         <h5 className="title m-0">
-                                                        <a href="#0">{cv.name}</a>
+                                                        <a href="#0">{cv.attributes.name}</a>
                                                         </h5>
                                                         <ul className="movie-rating-percent">
                                                             <li>
@@ -49,7 +49,7 @@ export default function Movie2() {
                                                     </div>
                                                 </div>
                                             )
-                                    }) */
+                                    }) 
                             }
                         </div>
                     </div>

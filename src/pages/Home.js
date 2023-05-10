@@ -309,6 +309,7 @@ export default function Home() {
                     </div>
                     <div className="col-lg-9">
                     <Movie />
+                    <Movie2 />
                     <div className="article-section padding-bottom">
                         <div className="section-header-1">
                         <h2 className="title">events</h2>
