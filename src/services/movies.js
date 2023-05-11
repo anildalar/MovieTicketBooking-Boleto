@@ -9,7 +9,7 @@ export const movieApi = createApi({
     baseQuery: fetchBaseQuery({ baseUrl: `${BACKEND_URL}` }),
     endpoints: (builder) => ({
         getMovieByName: builder.query({
-          query: () => `/api/movies?populate=*`,
+          query: (name='') => `/api/movies?populate=*${name}`,
         }),
       }),
 })

@@ -2,20 +2,39 @@ import React, { useEffect, useState } from 'react'
 import Movie3 from '../features/movie/Movie3'
 
 export default function MovieGrid() {
-    let [queryParams,setQueryParams] = useState('&filters[languages][name]=');
+    //let [hookVar,setHookVar] = useState(initialValue);
+    let [queryParams,setQueryParams] = useState('');
 
-    
+
     //2.2 function defination area
     let checkLang = (e)=>{
+        console.log('target----->',e.target.nextSibling?.innerHTML);
+        //var l = e.target.nextSibling?.innerHTML;
+        var lng = e.target.nextSibling?.innerHTML?.toUpperCase();
+        if (e.target.checked) {
+            console.log('checked');
+            //Add
+            //alert("checked");
+            if(lng !== undefined){
+        
+                setQueryParams(queryParams+'&filters[languages][name]='+lng);
+    
+           }
+        } else {
+            //Remove
 
-        if(e.target.nextSibling?.innerHTML !== undefined){
-            console.log('target----->',e.target.nextSibling?.innerHTML);
-            var lng = e.target.nextSibling?.innerHTML;
-            setQueryParams(queryParams+lng);
-       }
+            console.log('unchecked--->',lng);
+            if(lng !== undefined){
+
+                setQueryParams(queryParams.replace(`&filters[languages][name]=${lng}`, ""))
+            }
+          
+            //alert("unchecked");
+        }
+        
     }
     useEffect(()=>{
-        console.log('Query -->',queryParams)
+        console.log('anil -->',queryParams)
     },[queryParams]);
     return (
        <>
@@ -366,7 +385,7 @@ export default function MovieGrid() {
                         </div>
                         <div className="tab-area">
                         <div className="tab-item active">
-                            <Movie3 />
+                            <Movie3 param={queryParams} />
                         </div>
                         <div className="tab-item">
                             <div className="movie-area mb-10">

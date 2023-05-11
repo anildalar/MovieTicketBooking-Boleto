@@ -2,14 +2,16 @@ import React from 'react'
 import { useGetMovieByNameQuery } from '../../services/movies'
 import { BACKEND_URL } from '../../helper/helper';
 
-export default function Movie3() {
+export default function Movie3(props) {
     //2.1 Hooks area
-    const { data:movies, isLoading,isFetching,isError,error, } = useGetMovieByNameQuery()
+    const { data:movies, isLoading,isFetching,isError,error, } = useGetMovieByNameQuery(props.param)
     if (isLoading || isFetching) {
         return <div>loading...</div>;
     }
+    
     return (
         <>
+            {console.log('props--->',props.param)}
             {console.log('movie3--->',movies?.data)}
             <div className="row mb-10 justify-content-center">
                 {

@@ -8,6 +8,7 @@ export const getMovies = ()=>{
     //return object
     // short 
     // return new ClassName();
+    
     return new Promise((resolve, reject)=>{
         // We will call the actual API
         //PO.then().catch().finally()
@@ -22,5 +23,5 @@ export const getMovies = ()=>{
             reject(error)
         });
     });
-    
+
 }
